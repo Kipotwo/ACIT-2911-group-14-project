@@ -8,9 +8,18 @@
 <body>
 <main role="main" class="container">
     <div class="starter-template">
-        <a href='/'>Home</a> | 
-        <a href='/Card/Index'>View my Cards List</a><br/>
-        <a href='/Card/Create'> Create new Flashcard</a>
+        <a href='/User/Register'>Register</a> | 
+
+        <!-- Show 'Logout' and user name if authenticated. -->
+        <%if (reqInfo.authenticated) { %>
+          <a href='/Card/Create'> Create new Flashcard</a> |
+          <a href='/Card/Index'>View my Cards List</a> |
+          <a href='/User/Logout'>Logout</a> [<%= reqInfo.username %>]
+
+        <!-- 'else' must be in separate section with curly brackets to work. -->
+        <% } else { %>
+          <a href='/User/Login'>Login</a>
+        <% } %>
 
         <!-- Child view goes here. -->
         <%- body %>
