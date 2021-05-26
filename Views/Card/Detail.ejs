@@ -1,13 +1,32 @@
 <% layout('../layouts/mainlayout.ejs') -%>
 <br/><br/>
 <b>Flash Card Detail</b>
-
-<b>Title:</b> <%= cards.title %>  <br/>
-<b>Context:</b> <%= cards.context %>
-
+<br/>
+<b>Title:</b> 
+<div id="cardTitle" onclick="swapContent()">
+    <%= cards.title %>
+</div>  
+<div id="cardContent" onclick="swapContent()">
+    <%= cards.context %>
+</div>
+<br/>
 <!-- Created a button that links to the delete function -->
+<a href=<%= "/Card/Detail/" + cards.id + "/Edit" %>>Edit</a>
+
 <form  method="GET" action=<%= cards.id + "/Delete" %>>
 <button type="submit">Delete</button>
 </form>
 
-<a href=<%= "/Card/Detail/" + cards.id + "/Edit" %>>Edit</a>
+<script>
+    function swapContent() {
+        var1 = document.getElementById("cardTitle").style.display
+        var2 = document.getElementById("cardContent").style.display
+        if(var1 == "flex"){
+            document.getElementById("cardTitle").style.display="none";
+            document.getElementById("cardContent").style.display="flex";
+        }else{
+            document.getElementById("cardTitle").style.display="flex";
+            document.getElementById("cardContent").style.display="none";
+        }
+    }
+</script>

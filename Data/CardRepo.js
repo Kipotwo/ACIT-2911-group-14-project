@@ -1,4 +1,4 @@
-const Card = require('../Models/Card');
+const Cards = require('../Models/Card');
 
 class CardRepo {
     
@@ -8,17 +8,22 @@ class CardRepo {
 
     // Gets all flashcards.
     async getallcards() {     
-        let cards = await Card.find().exec();
+        let cards = await Cards.find().exec();
         return   cards;
     }
 
     async getCard(title) {  
-        let card = await Card.findOne({title:title}).exec();
+        let card = await Cards.findOne({title:title}).exec();
+        return   card;
+    }
+
+    async getCardbyID(id) {  
+        let card = await Cards.findOne({_id:id}).exec();
         return   card;
     }
 
     async userFlashCards(title) {  
-        let flashcards = await Card.find({title: title}).exec();
+        let flashcards = await Cards.find({title: title}).exec();
         return   flashcards;
     }
 
@@ -56,6 +61,60 @@ class CardRepo {
         }    
     }
 
+    //Edit
+    async update(editedObj) {   
+    
+        // Set up response object which contains origianl card object and empty error message.
+        let response = {
+            obj:          editedObj,
+            errorMessage: "" };
+    
+        try {
+            // Ensure the content submitted by the user validates.
+            var error = await editedObj.validateSync();
+            if(error) {
+                response.errorMessage = error.message;
+                return response;
+            } 
+    
+            // Load the actual corresponding object in the database.
+            let cardObject = await this.getCardbyID(editedObj.id);
+    
+            // Check if card exists.
+            if(cardObject) {
+    
+                // Card exists so update it.
+                let updated = await Cards.updateOne(
+                    { _id: editedObj.id}, // Match id.
+    
+                    // Set new attribute values here.
+                    {$set: { context: editedObj.context }}); 
+    
+                // No errors during update.
+                if(updated.nModified!=0) {
+                    response.obj = editedObj;
+                    return response;
+                }
+                // Errors occurred during the update.
+                else {
+                    response.errorMessage = 
+                        "An error occurred during the update. The item did not save." 
+                };
+                return response; 
+            }
+                
+            // Card not found.
+            else {
+                response.errorMessage = "An item with this id cannot be found." };
+                return response; 
+            }
+    
+                    // An error occurred during the update. 
+        catch (err) {
+            response.errorMessage = err.message;
+            return  response;
+        }    
+    }
     
 }
 

@@ -1,0 +1,53 @@
+C:\Users\Clinton\Desktop\flashcard\node_modules\mongoose\lib\connection.js:846
+  const serverSelectionError = new ServerSelectionError();
+                               ^
+
+MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at NativeConnection.Connection.openUri (C:\Users\Clinton\Desktop\flashcard\node_modules\mongoose\lib\connection.js:846:32)
+    at C:\Users\Clinton\Desktop\flashcard\node_modules\mongoose\lib\index.js:351:10
+    at C:\Users\Clinton\Desktop\flashcard\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:5    at new Promise (<anonymous>)
+    at promiseOrCallback (C:\Users\Clinton\Desktop\flashcard\node_modules\mongoose\lib\helpers\promiseOrCallback.js:30:10)
+    at Mongoose._promiseOrCallback (C:\Users\Clinton\Desktop\flashcard\node_modules\mongoose\lib\index.js:1149:10)
+    at Mongoose.connect (C:\Users\Clinton\Desktop\flashcard\node_modules\mongoose\lib\index.js:350:20)
+    at Object.<anonymous> (C:\Users\Clinton\Desktop\flashcard\app.js:11:10)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+    at Module.load (node:internal/modules/cjs/loader:989:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:829:14)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)
+    at node:internal/main/run_main_module:17:47 {
+  reason: TopologyDescription {
+    type: 'Single',
+    setName: null,
+    maxSetVersion: null,
+    maxElectionId: null,
+    servers: Map(1) {
+      'localhost:27017' => ServerDescription {
+        address: 'localhost:27017',
+        error: Error: connect ECONNREFUSED 127.0.0.1:27017
+            at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1133:16) {
+          name: 'MongoNetworkError'
+        },
+        roundTripTime: -1,
+        lastUpdateTime: 586466203,
+        lastWriteDate: null,
+        opTime: null,
+        type: 'Unknown',
+        topologyVersion: undefined,
+        minWireVersion: 0,
+        maxWireVersion: 0,
+        hosts: [],
+        passives: [],
+        arbiters: [],
+        tags: []
+      }
+    },
+    stale: false,
+    compatible: true,
+    compatibilityError: null,
+    logicalSessionTimeoutMinutes: null,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    commonWireVersion: null
+  }
+}
