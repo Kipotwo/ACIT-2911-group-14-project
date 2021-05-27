@@ -12,5 +12,6 @@ module.exports = function(app){
     app.get('/Card/Detail/:id', CardController.Detail);
     app.get('/Card/Detail/:id/Delete', CardController.Delete);
     app.get('/Card/Detail/:id/Edit', CardController.Edit);
-    app.post('/Card/Update/:id', CardController.Update)
+    app.post('/Card/Update/:id', CardController.Update);
+    app.post('/Card/Search', CardController.Search);
 };
