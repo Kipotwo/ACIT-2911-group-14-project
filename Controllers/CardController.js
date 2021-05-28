@@ -2,6 +2,7 @@ const RequestService = require('../Services/RequestService');
 const User           = require('../Models/User');
 
 // Placeholder "Database"
+
 database = [{title: "Test Card", context: "This is just a test", id: 1}]
 
 searchListCard = []
@@ -81,6 +82,7 @@ let Detail = (req, res) => {
 
 let Delete = (req, res) => {
     var reqInfo = RequestService.reqHelper(req);
+
     if(reqInfo.authenticated) {   
         let cardId = req.params.id;
 
@@ -135,20 +137,21 @@ let Search = (req, res) => {
 
     if(reqInfo.authenticated) {    
 
-        let title = req.body.title
+        let inputTitle = req.body.title
+        let title = inputTitle.toLowerCase()
         console.log(title)
 
         for (i in database){
             var allCard = database[i]
-            var allTitle = allCard.title
+            var allTitle = allCard.title.toLowerCase()
 
-            if(allTitle.includes(title)){
+            if(allTitle.includes(title) && title !==""){
                 searchListCard.push(database[i])
             }
         }
         for (i in searchListCard){
             var allSearchCard = searchListCard[i]
-            var allSearchTitle = allSearchCard.title
+            var allSearchTitle = allSearchCard.title.toLowerCase()
 
             if(allSearchTitle.indexOf(title) == -1){
                 searchListCard.splice(searchListCard[i], 1)
