@@ -164,7 +164,7 @@ let Shuffle = (req, res) => {
     var reqInfo = RequestService.reqHelper(req);
 
     if(reqInfo.authenticated) { 
-        let randomNumber = Math.floor(Math.random * database.length)
+        let randomNumber = Math.floor(Math.random() * database.length)
         console.log(randomNumber)
 
         if (randomNumber == 0){
