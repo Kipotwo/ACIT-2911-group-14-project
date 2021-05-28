@@ -173,7 +173,7 @@ let Shuffle = (req, res) => {
 
         let randomItem = getCard(randomNumber)
 
-        res.render('Card/Shuffle', { cards: randomItem })
+        res.render('Card/Shuffle', { cards: randomItem, reqInfo:reqInfo })
     }
     
     else {
