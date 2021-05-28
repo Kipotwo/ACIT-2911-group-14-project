@@ -160,5 +160,21 @@ let Search = (req, res) => {
     }
 }
 
+let Shuffle = (req, res) => {
+    var reqInfo = RequestService.reqHelper(req);
 
-module.exports = {database, searchListCard, Index, CreateCard, Create, Detail, Delete, Edit, Update, Search}
+    if(reqInfo.authenticated) { 
+        randomNumber = Math.floor(Math.random * this.database.length)
+        randomItem = this.database[randomNumber]
+
+        res.render('Card/Shuffle', { cards: randomItem })
+    }
+    
+    else {
+        res.redirect('/User/Login?errorMessage=You ' + 
+                     'must be logged in to view this page.')
+    }
+}
+
+
+module.exports = {database, searchListCard, Index, CreateCard, Create, Detail, Delete, Edit, Update, Search, Shuffle}

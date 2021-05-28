@@ -15,6 +15,7 @@
         <%if (reqInfo.authenticated) { %>
           <a href='/Card/Create'> Create new Flashcard</a> |
           <a href='/Card/Index'>View my Cards List</a> |
+          <a href='/Card/Shuffle'>Shuffle Cards</a> |
           <a href='/User/Logout'>Logout</a> [<%= reqInfo.username %>]
         <!-- 'else' must be in separate section with curly brackets to work. -->
         <% } else { %>
