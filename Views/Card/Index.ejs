@@ -1,0 +1,31 @@
+<% layout('../layouts/mainlayout.ejs') -%>
+
+<head>
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">    
+</head>
+<br/><br/>
+<h1>Flash Card Listing</h1>
+
+<form action="/Card/Search" method="POST">   
+  <input type="text" name="title" value="<%= cards.title ? cards.title : '' %>" placeholder="Search Cards with Title...">
+  <br/>
+  <input type="submit" value="Submit">
+</form>
+
+<table id="table">
+<% for(var i=0; i < cards.length; i++) { %>
+    <tr>
+      <td>Card Title: <%= cards[i].title %></td>
+      <td><a href=<%='/Card/Detail/' + cards[i].id %>>Detail</a></td>
+    </tr>
+ <% } %>
+</table>
+  
+<footer>
+    <p>Created by Group 14 - Aron Y., Daphney C., Richard W., Clinton W.</p>
+</footer>
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+<% layout('../layouts/mainlayout.ejs') -%>
+<head>
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">    
+</head>
+<br/>
+<form action="/Card/CreateCard" method="POST">   
+    <table>
+        <tr>
+            <td>Card Title: </td>
+            <td><input name="title" type="text"
+                       value="<%= cards.title ? cards.title : '' %>"></td>
+        </tr>  
+        <tr>
+            <td>Context: </td>
+            <td><input class="cardContext" name="context" type="text" 
+                value="<%= cards.context? cards.context : '' %>"></td>
+        </tr> 
+        <tr>
+            <td></td>
+            <td> <input type="submit" value="Submit"></td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">    
+</head>
+<body>
+<main role="main" class="container">
+    <div class="starter-template">
+        <a href='/User/Register'>Register</a> | 
+
+        <!-- Show 'Logout' and user name if authenticated. -->
+        <%if (reqInfo.authenticated) { %>
+          <a href='/Card/Create'> Create new Flashcard</a> |
+          <a href='/Card/Index'>View my Cards List</a> |
+          <a href='/User/Logout'>Logout</a> [<%= reqInfo.username %>]
+        <!-- 'else' must be in separate section with curly brackets to work. -->
+        <% } else { %>
+          <a href='/User/Login'>Login</a>
+        <% } %>
+
+        <!-- Child view goes here. -->
+        <%- body %>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<% layout('../layouts/mainlayout.ejs') -%>
+<br/><br/>
+<b>Flash Card Detail</b>
+<br/>
+<div id="cardTitle" onclick="swapContent()">
+    <%= cards.title %>
+</div>  
+<div id="cardContent" onclick="swapContent()">
+    <%= cards.context %>
+</div>
+<br/>
+<!-- Created a button that will lead to a random flashcard -->
+<a href="/Card/Shuffle">Shuffle</a>
+
+<script>
+    function swapContent() {
+        var1 = document.getElementById("cardTitle").style.display
+        var2 = document.getElementById("cardContent").style.display
+        if(var1 == "flex"){
+            document.getElementById("cardTitle").style.display="none";
+            document.getElementById("cardContent").style.display="flex";
+        }else{
+            document.getElementById("cardTitle").style.display="flex";
+            document.getElementById("cardContent").style.display="none";
+        }
+    }
+</script>
