@@ -165,6 +165,12 @@ let Shuffle = (req, res) => {
 
     if(reqInfo.authenticated) { 
         randomNumber = Math.floor(Math.random * database.length)
+        console.log(randomNumber)
+
+        if (randomNumber > 0){
+            randomNumber = randomNumber - 1
+        }
+
         randomItem = database[randomNumber]
 
         res.render('Card/Shuffle', { cards: randomItem })
