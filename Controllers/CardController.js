@@ -164,8 +164,8 @@ let Shuffle = (req, res) => {
     var reqInfo = RequestService.reqHelper(req);
 
     if(reqInfo.authenticated) { 
-        randomNumber = Math.floor(Math.random * this.database.length)
-        randomItem = this.database[randomNumber]
+        randomNumber = Math.floor(Math.random * database.length)
+        randomItem = database[randomNumber]
 
         res.render('Card/Shuffle', { cards: randomItem })
     }
