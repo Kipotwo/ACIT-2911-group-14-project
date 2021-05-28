@@ -81,7 +81,6 @@ let Detail = (req, res) => {
 
 let Delete = (req, res) => {
     var reqInfo = RequestService.reqHelper(req);
-
     if(reqInfo.authenticated) {   
         let cardId = req.params.id;
 
