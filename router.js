@@ -22,6 +22,5 @@ module.exports = function(app){
     app.get('/Card/Detail/:id/Edit', CardController.Edit);
     app.post('/Card/Update/:id', CardController.Update);
     app.post('/Card/Search', CardController.Search);
-
     app.get('/Card/Shuffle', CardController.Shuffle);
 };
